@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-cost-of-modules/node_modules/cost-of-modules/lib/helpers.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-cost-of-modules">npmtest-cost-of-modules (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-cost-of-modules/node_modules/cost-of-modules/lib/helpers.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">15.63% <small>(20 / 128)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">4.69% <small>(3 / 64)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">16.81% <small>(20 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-cost-of-modules/node_modules/cost-of-modules/lib/</a> &#187; helpers.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+var _typeof = typeof Symbol === "function" &amp;&amp; typeof Symbol.iterator === "symbol" ? <span class="fstat-no" title="function not covered" >function (obj) {</span> <span class="cstat-no" title="statement not covered" >return typeof obj; </span>} : <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function (obj) {</span> <span class="cstat-no" title="statement not covered" >return obj &amp;&amp; typeof Symbol === "function" &amp;&amp; obj.constructor === Symbol &amp;&amp; obj !== Symbol.prototype ? "symbol" : typeof obj; </span>};</span>
+&nbsp;
+var fs = require('fs-extra');
+var syncExec = require('sync-exec');
+var Table = require('cli-table2');
+&nbsp;
+var _require = require('colors'),
+    yellow = _require.yellow;
+&nbsp;
+var argv = require('yargs-parser')(process.argv.slice(2));
+var path = require('path');
+&nbsp;
+/*
+    By default, this assumes production mode
+    you can disable that by using --include-dev
+    or by passing includeDev to setup
+*/
+var productionModifier = '--production';
+&nbsp;
+var setup = <span class="fstat-no" title="function not covered" >function setup(includeDev) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (argv.includeDev || includeDev) <span class="cstat-no" title="statement not covered" >productionModifier = '';</span></span>
+&nbsp;
+    /*
+        Check if package.json exists
+        Need it to build dependency tree
+    */
+<span class="cstat-no" title="statement not covered" >    var packageJSONExists = fs.existsSync('package.json');</span>
+<span class="cstat-no" title="statement not covered" >    if (!packageJSONExists) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('package.json not found!');</span>
+<span class="cstat-no" title="statement not covered" >        console.log();</span>
+<span class="cstat-no" title="statement not covered" >        process.exit();</span>
+    }
+&nbsp;
+    /* Do not install dependencies based --no-install flag */
+<span class="cstat-no" title="statement not covered" >    if (argv.install != null &amp;&amp; !argv.install) <span class="cstat-no" title="statement not covered" >return;</span></span>
+&nbsp;
+    /*
+        Make sure dependencies are installed
+        Ignore devDependencies/bundledDependencies by default
+        Adds them with --include-dev
+    */
+<span class="cstat-no" title="statement not covered" >    console.log('Making sure dependencies are installed');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var command = 'npm install ' + productionModifier;</span>
+<span class="cstat-no" title="statement not covered" >    if (argv.yarn) <span class="cstat-no" title="statement not covered" >command = command.replace('npm', 'yarn');</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    console.log(command);</span>
+<span class="cstat-no" title="statement not covered" >    console.log();</span>
+&nbsp;
+    /* Check if node modules exist and then backup */
+<span class="cstat-no" title="statement not covered" >    var nodeModulesExist = fs.existsSync('node_modules');</span>
+<span class="cstat-no" title="statement not covered" >    if (nodeModulesExist) <span class="cstat-no" title="statement not covered" >fs.copySync('node_modules', 'node_modules_bak');</span></span>
+&nbsp;
+    /* Run install command */
+<span class="cstat-no" title="statement not covered" >    syncExec(command, { stdio: [0, 1, 2] });</span>
+<span class="cstat-no" title="statement not covered" >    console.log();</span>
+};
+&nbsp;
+/*
+    Get dependency tree with npm -ls
+    Ignore devDependencies/bundledDependencies by default
+    Adds them with --include-dev
+*/
+var getDependencyTree = <span class="fstat-no" title="function not covered" >function getDependencyTree() {</span>
+<span class="cstat-no" title="statement not covered" >    var result = syncExec('npm ls --json ' + productionModifier);</span>
+<span class="cstat-no" title="statement not covered" >    return JSON.parse(result.stdout).dependencies;</span>
+};
+&nbsp;
+/*
+    Get root dependencies from tree
+    These are the ones declared as dependendies in package.json
+    [a, b, c, d]
+*/
+var getRootDependencies = <span class="fstat-no" title="function not covered" >function getRootDependencies() {</span>
+<span class="cstat-no" title="statement not covered" >    var dependencyTree = getDependencyTree();</span>
+<span class="cstat-no" title="statement not covered" >    if (!dependencyTree) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('There are no dependencies!');</span>
+<span class="cstat-no" title="statement not covered" >        console.log();</span>
+<span class="cstat-no" title="statement not covered" >        process.exit(1);</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return Object.keys(dependencyTree).sort();</span>
+};
+&nbsp;
+/* to fix the missing du problem on windows */
+&nbsp;
+var dirSize = <span class="fstat-no" title="function not covered" >function dirSize(root) {</span>
+<span class="cstat-no" title="statement not covered" >    var out = 0;</span>
+<span class="cstat-no" title="statement not covered" >    var _getDirSizeRecursively = void 0;</span>
+<span class="cstat-no" title="statement not covered" >    (_getDirSizeRecursively = <span class="fstat-no" title="function not covered" >function getDirSizeRecursively(rootLocal) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var itemStats = fs.lstatSync(rootLocal);</span>
+<span class="cstat-no" title="statement not covered" >        if (itemStats.isDirectory()) {</span>
+<span class="cstat-no" title="statement not covered" >            var allSubs = fs.readdirSync(rootLocal);</span>
+<span class="cstat-no" title="statement not covered" >            allSubs.forEach(<span class="fstat-no" title="function not covered" >function (file) {</span></span>
+<span class="cstat-no" title="statement not covered" >                _getDirSizeRecursively(path.join(rootLocal, file));</span>
+            });
+        } else {
+<span class="cstat-no" title="statement not covered" >            out += itemStats.size;</span>
+        }
+    })(root);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return Math.floor(out / 1024); </span>/* in KB */
+};
+/*
+    Get scoped modules
+*/
+var getScopedModules = <span class="fstat-no" title="function not covered" >function getScopedModules(scope) {</span>
+<span class="cstat-no" title="statement not covered" >    var modules = {};</span>
+<span class="cstat-no" title="statement not covered" >    var allScopes = fs.readdirSync(path.join('node_modules', scope));</span>
+<span class="cstat-no" title="statement not covered" >    allScopes.forEach(<span class="fstat-no" title="function not covered" >function (name) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var itemStats = fs.lstatSync(path.join('node_modules', scope, name));</span>
+<span class="cstat-no" title="statement not covered" >        if (itemStats.isDirectory()) {</span>
+<span class="cstat-no" title="statement not covered" >            var size = dirSize(path.join('node_modules', scope, name));</span>
+<span class="cstat-no" title="statement not covered" >            if (name) {</span>
+<span class="cstat-no" title="statement not covered" >                modules[scope + '/' + name] = size;</span>
+            }
+        }
+    });
+<span class="cstat-no" title="statement not covered" >    return modules;</span>
+};
+&nbsp;
+var getSizeForNodeModules = <span class="fstat-no" title="function not covered" >function getSizeForNodeModules() {</span>
+<span class="cstat-no" title="statement not covered" >    var modules = {};</span>
+<span class="cstat-no" title="statement not covered" >    var allModules = fs.readdirSync('node_modules');</span>
+<span class="cstat-no" title="statement not covered" >    allModules.forEach(<span class="fstat-no" title="function not covered" >function (name) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var itemStats = fs.lstatSync(path.join('node_modules', name));</span>
+<span class="cstat-no" title="statement not covered" >        if (itemStats.isDirectory()) {</span>
+<span class="cstat-no" title="statement not covered" >            if (name &amp;&amp; name[0] === '@') {</span>
+<span class="cstat-no" title="statement not covered" >                var scopedModules = getScopedModules(name);</span>
+<span class="cstat-no" title="statement not covered" >                Object.assign(modules, scopedModules);</span>
+            } else <span class="cstat-no" title="statement not covered" >if (name) {</span>
+<span class="cstat-no" title="statement not covered" >                var size = dirSize(path.join('node_modules', name));</span>
+<span class="cstat-no" title="statement not covered" >                modules[name] = size;</span>
+            }
+        }
+    });
+<span class="cstat-no" title="statement not covered" >    return modules;</span>
+};
+/*
+    Get all nested dependencies for a root dependency
+    Traverse recursively through the tree
+    and return all the nested dependendies in a flat array
+*/
+var getDependenciesRecursively = <span class="fstat-no" title="function not covered" >function getDependenciesRecursively() {</span>
+<span class="cstat-no" title="statement not covered" >    var modules = arguments.length &gt; 0 &amp;&amp; arguments[0] !== undefined ? arguments[0] : [];</span>
+<span class="cstat-no" title="statement not covered" >    var tree = arguments[1];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var deps = Object.keys(tree);</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = 0; i &lt; deps.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        var dep = deps[i];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (_typeof(tree[dep]) === 'object' &amp;&amp; tree[dep] !== null) {</span>
+<span class="cstat-no" title="statement not covered" >            if (tree[dep].dependencies !== null) {</span>
+<span class="cstat-no" title="statement not covered" >                if (dep !== 'dependencies') <span class="cstat-no" title="statement not covered" >modules.push(dep);</span></span>
+<span class="cstat-no" title="statement not covered" >                getDependenciesRecursively(modules, tree[dep]);</span>
+            } else <span class="cstat-no" title="statement not covered" >if (tree[dep].version !== null) <span class="cstat-no" title="statement not covered" >modules.push(dep);</span></span>
+        }
+    }
+<span class="cstat-no" title="statement not covered" >    return modules;</span>
+};
+&nbsp;
+/*
+    Attach the flat array from getDependenciesRecursively
+    to it's parent
+    [{
+        name: rootDependency,
+        children: [a, b, c, d]
+    }]
+*/
+var attachNestedDependencies = <span class="fstat-no" title="function not covered" >function attachNestedDependencies(rootDependencies) {</span>
+<span class="cstat-no" title="statement not covered" >    var flatDependencies = [];</span>
+<span class="cstat-no" title="statement not covered" >    var dependencyTree = getDependencyTree();</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = 0; i &lt; rootDependencies.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        var dep = rootDependencies[i];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        flatDependencies.push({</span>
+            name: dep,
+            /* Get flat child dependencies array */
+            children: getDependenciesRecursively([], dependencyTree[dep])
+        });
+    }
+<span class="cstat-no" title="statement not covered" >    return flatDependencies.sort();</span>
+};
+&nbsp;
+/*
+    Get all dependencies in a flat array:
+    Root dependencies +  all their children
+    Deduplicate
+*/
+var getAllDependencies = <span class="fstat-no" title="function not covered" >function getAllDependencies(flatDependencies) {</span>
+<span class="cstat-no" title="statement not covered" >    var allDependencies = [];</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = 0; i &lt; flatDependencies.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        var dep = flatDependencies[i];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        allDependencies.push(dep.name); </span>// Root dependency
+<span class="cstat-no" title="statement not covered" >        allDependencies = allDependencies.concat(dep.children); </span>// Children
+    }
+    /* Deduplicate */
+<span class="cstat-no" title="statement not covered" >    allDependencies = allDependencies.filter(<span class="fstat-no" title="function not covered" >function (dep, index) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return allDependencies.indexOf(dep) === index;</span>
+    });
+<span class="cstat-no" title="statement not covered" >    return allDependencies.sort();</span>
+};
+&nbsp;
+var displayResults = <span class="fstat-no" title="function not covered" >function displayResults(flatDependencies, allDependencies, totalSize) {</span>
+    /* Sort by size */
+<span class="cstat-no" title="statement not covered" >    var sortedDependencies = flatDependencies.sort(<span class="fstat-no" title="function not covered" >function (a, b) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return b.actualSize - a.actualSize;</span>
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var table = new Table({ head: ['name', 'children', 'size'] });</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (var i = 0; i &lt; sortedDependencies.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        var dep = sortedDependencies[i];</span>
+&nbsp;
+        /* Showing only top 10 results in less mode */
+<span class="cstat-no" title="statement not covered" >        if (argv.less &amp;&amp; i === 10) {</span>
+<span class="cstat-no" title="statement not covered" >            table.push(['+ ' + (sortedDependencies.length - 10) + ' modules', null, null]);</span>
+<span class="cstat-no" title="statement not covered" >            break;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        table.push([dep.name, dep.numberOfChildren, (dep.actualSize / 1024).toFixed(2) + 'M' // Converting to M</span>
+        ]);
+    }
+&nbsp;
+    /* Total */
+<span class="cstat-no" title="statement not covered" >    table.push([yellow(sortedDependencies.length + ' modules'), yellow(allDependencies.length - sortedDependencies.length + ' children'), yellow((totalSize / 1024).toFixed(2) + 'M')]); </span>// Converting to M
+&nbsp;
+    /* Print the table with some padding */
+<span class="cstat-no" title="statement not covered" >    console.log();</span>
+<span class="cstat-no" title="statement not covered" >    console.log(table.toString());</span>
+<span class="cstat-no" title="statement not covered" >    console.log();</span>
+};
+&nbsp;
+/* Return to original state */
+var teardown = <span class="fstat-no" title="function not covered" >function teardown() {</span>
+    /*
+      If the command is running with no-install,
+      there is no need for teardown
+    */
+<span class="cstat-no" title="statement not covered" >    if (argv.install != null &amp;&amp; !argv.install) <span class="cstat-no" title="statement not covered" >return;</span></span>
+    /*
+      Restore node_modules backup if it exists
+    */
+<span class="cstat-no" title="statement not covered" >    var backupExist = fs.existsSync('node_modules_bak');</span>
+<span class="cstat-no" title="statement not covered" >    if (backupExist) {</span>
+<span class="cstat-no" title="statement not covered" >        fs.removeSync('node_modules');</span>
+<span class="cstat-no" title="statement not covered" >        fs.moveSync('node_modules_bak', 'node_modules');</span>
+    }
+};
+&nbsp;
+module.exports = {
+    setup: setup,
+    getSizeForNodeModules: getSizeForNodeModules,
+    getRootDependencies: getRootDependencies,
+    attachNestedDependencies: attachNestedDependencies,
+    getAllDependencies: getAllDependencies,
+    displayResults: displayResults,
+    teardown: teardown
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 18 2017 21:31:21 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
