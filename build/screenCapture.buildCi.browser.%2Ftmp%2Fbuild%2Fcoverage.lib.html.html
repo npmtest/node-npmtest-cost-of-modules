@@ -195,16 +195,16 @@
     <h1>Code coverage report for <span class="entity">node-npmtest-cost-of-modules/node_modules/cost-of-modules/lib/helpers.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">15.63% <small>(20 / 128)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">25.78% <small>(33 / 128)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">4.69% <small>(3 / 64)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">17.19% <small>(11 / 64)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">0% <small>(0 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">5.26% <small>(1 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">16.81% <small>(20 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">26.89% <small>(32 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -497,40 +497,40 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -759,41 +759,41 @@ var path = require('path');
 */
 var productionModifier = '--production';
 &nbsp;
-var setup = <span class="fstat-no" title="function not covered">function setup(includeDev) {</span>
-<span class="cstat-no" title="statement not covered">    console.log();</span>
+var setup = function setup(includeDev) {
+    console.log();
 &nbsp;
-<span class="cstat-no" title="statement not covered">    if (argv.includeDev || includeDev) <span class="cstat-no" title="statement not covered">productionModifier = '';</span></span>
+    <span class="missing-if-branch" title="if path not taken">I</span>if (argv.includeDev || includeDev) <span class="cstat-no" title="statement not covered">productionModifier = '';</span>
 &nbsp;
     /*
         Check if package.json exists
         Need it to build dependency tree
     */
-<span class="cstat-no" title="statement not covered">    var packageJSONExists = fs.existsSync('package.json');</span>
-<span class="cstat-no" title="statement not covered">    if (!packageJSONExists) {</span>
+    var packageJSONExists = fs.existsSync('package.json');
+    <span class="missing-if-branch" title="if path not taken">I</span>if (!packageJSONExists) {
 <span class="cstat-no" title="statement not covered">        console.log('package.json not found!');</span>
 <span class="cstat-no" title="statement not covered">        console.log();</span>
 <span class="cstat-no" title="statement not covered">        process.exit();</span>
     }
 &nbsp;
     /* Do not install dependencies based --no-install flag */
-<span class="cstat-no" title="statement not covered">    if (argv.install != null &amp;&amp; !argv.install) <span class="cstat-no" title="statement not covered">return;</span></span>
+    <span class="missing-if-branch" title="if path not taken">I</span>if (argv.install != null &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered">!argv.install)</span> <span class="cstat-no" title="statement not covered">return;</span>
 &nbsp;
     /*
         Make sure dependencies are installed
         Ignore devDependencies/bundledDependencies by default
         Adds them with --include-dev
     */
-<span class="cstat-no" title="statement not covered">    console.log('Making sure dependencies are installed');</span>
+    console.log('Making sure dependencies are installed');
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var command = 'npm install ' + productionModifier;</span>
-<span class="cstat-no" title="statement not covered">    if (argv.yarn) <span class="cstat-no" title="statement not covered">command = command.replace('npm', 'yarn');</span></span>
+    var command = 'npm install ' + productionModifier;
+    <span class="missing-if-branch" title="if path not taken">I</span>if (argv.yarn) <span class="cstat-no" title="statement not covered">command = command.replace('npm', 'yarn');</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    console.log(command);</span>
-<span class="cstat-no" title="statement not covered">    console.log();</span>
+    console.log(command);
+    console.log();
 &nbsp;
     /* Check if node modules exist and then backup */
-<span class="cstat-no" title="statement not covered">    var nodeModulesExist = fs.existsSync('node_modules');</span>
-<span class="cstat-no" title="statement not covered">    if (nodeModulesExist) <span class="cstat-no" title="statement not covered">fs.copySync('node_modules', 'node_modules_bak');</span></span>
+    var nodeModulesExist = fs.existsSync('node_modules');
+    <span class="missing-if-branch" title="else path not taken">E</span>if (nodeModulesExist) fs.copySync('node_modules', 'node_modules_bak');
 &nbsp;
     /* Run install command */
 <span class="cstat-no" title="statement not covered">    syncExec(command, { stdio: [0, 1, 2] });</span>
@@ -1005,7 +1005,7 @@ module.exports = {
 </tbody></table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 18 2017 21:32:21 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sat Apr 22 2017 00:32:08 GMT+0000 (UTC)</div>
 </div>
 
 
